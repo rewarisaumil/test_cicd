@@ -39,13 +39,13 @@ jobs:
          echo "$JIRA_KEY"
        env:
          JIRA_KEY: ${{ steps.extract_key.outputs.JIRA_KEY }}
+
          
      - name: Add Comment to Jira Ticket
        uses: atlassian/gajira-comment@v3
        with:
-          issue: ${{ steps.extract_key.outputs.JIRA_KEY }}
+          issue: ${{ JIRA_KEY }}
           comment: "This is an automated comment"
-
 
      - name: Change State from Todo to InProgress
        id: transition
