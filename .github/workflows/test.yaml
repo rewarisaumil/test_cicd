@@ -1,4 +1,4 @@
-name: Update Jira Ticket Status
+name: Update Jira Ticket Information
 
 on:
   push:
