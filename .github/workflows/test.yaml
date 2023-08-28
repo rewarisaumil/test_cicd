@@ -35,9 +35,8 @@ jobs:
        id: extract_key
        run: |
          COMMIT_MESSAGE=$(git log -1 --pretty=format:%s)
-         echo "$COMMIT_MESSAGE"
-#         JIRA_KEY=$(echo "$COMMIT_MESSAGE" | grep -oE '[A-Z]+-[0-9]+')
-#         echo "Jira Issue Key: $JIRA_KEY"
+         JIRA_KEY=$(echo "$COMMIT_MESSAGE" | grep -oE '[A-Z]+-[0-9]+')
+         echo "$JIRA_KEY"
        env:
          JIRA_KEY: ${{ steps.extract_key.outputs.JIRA_KEY }}
          
