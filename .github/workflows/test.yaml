@@ -46,6 +46,7 @@ jobs:
           issue: ${{ steps.extract_key.outputs.JIRA_KEY }}
           comment: "This is an automated comment"
 
+
      - name: Change State from Todo to InProgress
        id: transition
        uses: atlassian/gajira-transition@v3
