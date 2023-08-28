@@ -16,7 +16,7 @@ jobs:
      - name: Set up Python
        uses: actions/setup-python@v2
        with:
-         python-version: 3.x  # Choose your desired Python version
+         python-version: 3.x
   
      - name: Install Dependencies
        run: pip install requests
@@ -26,16 +26,24 @@ jobs:
          echo "Selenium Test Successfully"
          echo "ok"
          
-     - name: Login
+     - name: Jira Login
        uses: atlassian/gajira-login@master
        env:
          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
          JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
          
-     - name: Comment
+     - name: Add Comment to Jira
        uses: atlassian/gajira-comment@v3
        with:
           issue: SCRUM-1
           comment: "This is an automated comment"
+
+     - name: Change State from Todo to InProgress
+       id: transition
+       uses: atlassian/gajira-transition@v3
+       with:
+         issue: SCRUM-1
+         transition: "In progress"
+
   
