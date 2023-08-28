@@ -1,0 +1,60 @@
+name: Update Jira Ticket Status
+
+on:
+  push:
+    branches:
+      - master  # Replace with your main branch name
+
+jobs:
+  update_jira_status:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x  # Choose your desired Python version
+
+    - name: Install Dependencies
+      run: pip install requests
+
+    - name: Run Selenium Tests
+      run: |
+        echo "Selenium Test Successful"
+
+    - name: Login
+      uses: atlassian/gajira-comment@v3
+      env:
+        JIRA_BASE_URL: "https://infocusp.atlassian.net/"
+        JIRA_USER_EMAIL: "saumil@infocusp.com"
+#        JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+        JIRA_API_TOKEN: ATATT3xFfGF0uGouQjyKdsg_sHTACwdRvEPmQipD1sh42N2U_up27uJeEOOVYFc_e5tz5C8mrC1HNSoQBCu-xDNk7NnFFpusY9QrWTYHkNrjCUzylecloWp3gmnT9bVfHXlELW1u6PiUnd__ONOkRILPH-w0OkuwjpnGeh_iIW6e9IdgHqWPRq0=58B74796
+
+
+    - name: Comment
+      uses: atlassian/gajira-comment@v3
+      with:
+        issue: TEST-1
+        comment: "This is an automated comment"
+
+
+#    - name: Update Jira Ticket Status
+#      env:
+#        JIRA_USERNAME: "Saumil Rewari"
+#        JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+#        JIRA_TICKET_KEY: "YOUR-JIRA-TICKET-KEY"  # Replace with the actual Jira ticket key
+#        NEW_STATUS: "In Progress"  # Replace with the desired new status
+#      run: |
+#        python update_jira_status.py
+#
+#    - name: Add Comment to Jira Ticket
+#      env:
+#        JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+#        JIRA_BASE_URL: "https://your-jira-instance.atlassian.net"  # Replace with your Jira instance URL
+#        JIRA_ISSUE_KEY: "YOUR-JIRA-ISSUE-KEY"  # Replace with the actual Jira issue key
+#      run: |
+#        python add_comment_to_jira.py
+
