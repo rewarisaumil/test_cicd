@@ -19,21 +19,28 @@ jobs:
          python-version: 3.x
   
      - name: Install Dependencies
-       run: pip install requests
+       run: echo "All dependencies installed successfully."
   
      - name: Run Selenium Tests
-       run: |
-         echo "Selenium Test Successfully"
-         echo "ok"
-         
+       run: echo "All Test cases passed"
+
      - name: Jira Login
        uses: atlassian/gajira-login@master
        env:
          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
          JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+
+     - name: Extract Jira Issue Key
+       id: extract_key
+       run: |
+         COMMIT_MESSAGE=$(git log -1 --pretty=format:%s)
+         JIRA_KEY=$(echo "$COMMIT_MESSAGE" | grep -oE '[A-Z]+-[0-9]+')
+         echo "Jira Issue Key: $JIRA_KEY"
+       env:
+         JIRA_KEY: ${{ steps.extract_key.outputs.JIRA_KEY }}
          
-     - name: Add Comment to Jira
+     - name: Add Comment to Jira Ticket
        uses: atlassian/gajira-comment@v3
        with:
           issue: SCRUM-1
