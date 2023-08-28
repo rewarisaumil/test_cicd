@@ -44,14 +44,14 @@ jobs:
      - name: Add Comment to Jira Ticket
        uses: atlassian/gajira-comment@v3
        with:
-          issue: ${{ JIRA_KEY }}
+          issue: SCRUM-1
           comment: "This is an automated comment"
 
      - name: Change State from Todo to InProgress
        id: transition
        uses: atlassian/gajira-transition@v3
        with:
-         issue: ${{ JIRA_KEY }}
+         issue: SCRUM-1
          transition: "In progress"
 
   
