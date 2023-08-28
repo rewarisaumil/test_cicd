@@ -26,11 +26,12 @@ jobs:
          echo "Selenium Test Successfully"
          echo "ok"
      - name: Login
-       uses: atlassian/gajira-login@v3
+     - uses: atlassian/gajira-login@master
        env:
-          JIRA_BASE_URL: "https://srqa.atlassian.net"
-          JIRA_USER_EMAIL: "saumilrewari@gmail.com"
-          JIRA_API_TOKEN: "ATATT3xFfGF0qnZQZOrdwHHto8x_N2t3g3BDvrZna_XxmDlB8d1dBU3JWxjgwaWS1qR7bf2AT1go00aFrrTK0mukCR1USizSFx6F6GxEJNh7jl3B9Hos3Aj6ukefyT0ieyZS-2ey-cfR6C06-bBMSvYMbhHuo7vL-mZzLOdu5jPtX5awhMsCkuc=E7F39A65"
+         JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+         JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+         JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+         
      - name: Comment
        uses: atlassian/gajira-comment@v3
        with:
