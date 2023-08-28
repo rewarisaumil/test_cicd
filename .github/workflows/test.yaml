@@ -37,6 +37,7 @@ jobs:
          COMMIT_MESSAGE=$(git log -1 --pretty=format:%s)
          JIRA_KEY=$(echo "$COMMIT_MESSAGE" | grep -oE '[A-Z]+-[0-9]+')
          echo "$JIRA_KEY"
+         echo "::set-output name=issue_number::$JIRA_KEY"
        env:
          JIRA_KEY: ${{ steps.extract_key.outputs.JIRA_KEY }}
 
@@ -44,7 +45,7 @@ jobs:
      - name: Add Comment to Jira Ticket
        uses: atlassian/gajira-comment@v3
        with:
-          issue: SCRUM-1
+          issue: ${{ steps.extract_key.outputs.issue_number }}
           comment: "This is an automated comment"
 
      - name: Change State from Todo to InProgress
