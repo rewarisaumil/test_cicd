@@ -26,11 +26,10 @@ jobs:
 #        echo "Selenium Test Successfully"
 
     - name: Jira Login
-      uses: govcms-extras/github-action-jira-connect@main
+      uses: atlassian/gajira-login@v3
       env:
         JIRA_BASE_URL: https://infocusp.atlassian.net
         JIRA_USER_EMAIL: saumil@infocusp.com
-#        JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
         JIRA_API_TOKEN: ATATT3xFfGF0cJTW7QoJ4s19Qvp9Rg9RpyRiiV66yCaa3YqJRFYGVHu7GFdJv_Ikbffmo_Pmmv0xYFNyON0ynIzqngZkBmzVhY8k37lpYx_dI16uIzG9KNg1IpAgfKHyx3JOIOK_R5S4BVZ9On0kPmYR9Prh8AH_MglaMbCOoewvCxip-MafPOQ=643379D0
 
     - name: Comment
