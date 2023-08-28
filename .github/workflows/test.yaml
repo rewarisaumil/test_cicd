@@ -10,29 +10,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.x  # Choose your desired Python version
-
-    - name: Install Dependencies
-      run: pip install requests
-
-    - name: Run Selenium Tests
-      run: |
-        echo "Selenium Test Successfully"
+#    - name: Checkout Repository
+#      uses: actions/checkout@v2
+#
+#    - name: Set up Python
+#      uses: actions/setup-python@v2
+#      with:
+#        python-version: 3.x  # Choose your desired Python version
+#
+#    - name: Install Dependencies
+#      run: pip install requests
+#
+#    - name: Run Selenium Tests
+#      run: |
+#        echo "Selenium Test Successfully"
 
     - name: Jira Login
       uses: govcms-extras/github-action-jira-connect@main
       env:
-        JIRA_BASE_URL: "https://infocusp.atlassian.net"
-        JIRA_USER_EMAIL: "saumil@infocusp.com"
+        JIRA_BASE_URL: https://infocusp.atlassian.net
+        JIRA_USER_EMAIL: saumil@infocusp.com
 #        JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
-        JIRA_API_TOKEN: "ATATT3xFfGF09_MIU_WOQDRHY7pZOebiFQ4hkl-6CH682kKbSrd8S-fafIjQTdNTQHRjJQOW-w_HQjvGWHunzGzcsvjzER_Vy_vqGOjx57c93eO8Xprw-TuhJB71q8bNw1phUV63h-lwBRuhtN2m4xqpErHkRVWDo9Eygjq6k3XnH3CXvYswwq8=79AAF183"
-
+        JIRA_API_TOKEN: ATATT3xFfGF09_MIU_WOQDRHY7pZOebiFQ4hkl-6CH682kKbSrd8S-fafIjQTdNTQHRjJQOW-w_HQjvGWHunzGzcsvjzER_Vy_vqGOjx57c93eO8Xprw-TuhJB71q8bNw1phUV63h-lwBRuhtN2m4xqpErHkRVWDo9Eygjq6k3XnH3CXvYswwq8=79AAF183
 
     - name: Comment
       uses: atlassian/gajira-comment@v3
