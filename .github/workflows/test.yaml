@@ -23,7 +23,7 @@ jobs:
 
     - name: Run Selenium Tests
       run: |
-        echo "Selenium Test Successful"
+        echo "Selenium Test Successfully"
 
     - name: Login
       uses: atlassian/gajira-comment@v3
