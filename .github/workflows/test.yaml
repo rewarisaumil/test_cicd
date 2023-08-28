@@ -28,14 +28,14 @@ jobs:
     - name: Jira Login
       uses: atlassian/gajira-login@v3
       env:
-        JIRA_BASE_URL: https://infocusp.atlassian.net
-        JIRA_USER_EMAIL: saumil@infocusp.com
-        JIRA_API_TOKEN: ATATT3xFfGF0cJTW7QoJ4s19Qvp9Rg9RpyRiiV66yCaa3YqJRFYGVHu7GFdJv_Ikbffmo_Pmmv0xYFNyON0ynIzqngZkBmzVhY8k37lpYx_dI16uIzG9KNg1IpAgfKHyx3JOIOK_R5S4BVZ9On0kPmYR9Prh8AH_MglaMbCOoewvCxip-MafPOQ=643379D0
+        JIRA_BASE_URL: https://srqa.atlassian.net
+        JIRA_USER_EMAIL: saumilrewari@gmail.com
+        JIRA_API_TOKEN: ATATT3xFfGF0KO6VKFE3smti1swkw_JvrT4y2sALZxa4H18f1X95qDcBiLjVPGdB9whWdNVyPPhGWts9KxPrbL1RoI3qOyekl-YYlEg45taUTF7w50tWo841rVajjbq5EcRBHj9NThFkKFHOz_aG8zlYQAXE5n98CV7detEApiCuHdhT0zpsoyk=C40E4E1F
 
     - name: Comment
       uses: atlassian/gajira-comment@v3
       with:
-        issue: TEST-1
+        issue: SCRUM-1
         comment: "This is an automated comment"
 
 
